@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Criar Contato</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item lines="none">
+      <h3>Novo Usuário</h3>
+    </ion-item>
+    <form [formGroup]="formCadastrar" (submit)="submitFormCadastrar()">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <small *ngIf="email.hasError('required') && email.touched">
+      * Campo Obrigatório
+      <small *ngIf="confSenha.hasError('minlength') && confSenha.dirty">
+        *Senha precisa ter no mínimo 6 caracteres</small
+      >
+      <small *ngIf="senha.hasError('minlength') && senha.dirty">
+        *Senha precisa ter no mínimo 6 caracteres</small
+      >
+
+    </small>
+    <small *ngIf="email.hasError('email') && email.touched">
+        * Formato de email inválido
+    </small>
+
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" formControlName="senha"></ion-input>
+    </ion-item>
+
+    <small *ngIf="senha.hasError('required') && senha.touched">
+        * Campo Obrigatório
+      </small>
+
+    <ion-item>
+      <ion-label position="floating">Confirmar Senha</ion-label>
+      <ion-input type="password" formControlName="confSenha"></ion-input>
+    </ion-item>
+
+    <small *ngIf="confSenha.hasError('required') && confSenha.touched">
+        * Campo Obrigatório
+      </small>
+
+    <ion-button type="submit" size="full" style="margin-top: 5vh">Cadastrar</ion-button>
+
+  </form>
+  </ion-content>
