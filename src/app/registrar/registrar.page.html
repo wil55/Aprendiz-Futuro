@@ -16,17 +16,16 @@
 
     <small *ngIf="email.hasError('required') && email.touched">
       * Campo Obrigatório
-      <small *ngIf="confSenha.hasError('minlength') && confSenha.dirty">
-        *Senha precisa ter no mínimo 6 caracteres</small
-      >
-      <small *ngIf="senha.hasError('minlength') && senha.dirty">
-        *Senha precisa ter no mínimo 6 caracteres</small
-      >
-
+     
     </small>
     <small *ngIf="email.hasError('email') && email.touched">
         * Formato de email inválido
     </small>
+
+    <ion-item>
+      <ion-label position="floating">Setor</ion-label>
+      <ion-input type="text" formControlName="setor"></ion-input>
+    </ion-item>
 
     <ion-item>
       <ion-label position="floating">Senha</ion-label>
@@ -37,6 +36,10 @@
         * Campo Obrigatório
       </small>
 
+      <small *ngIf="senha.hasError('minlength') && senha.dirty">
+        *Senha precisa ter no mínimo 6 caracteres</small
+      >
+
     <ion-item>
       <ion-label position="floating">Confirmar Senha</ion-label>
       <ion-input type="password" formControlName="confSenha"></ion-input>
@@ -45,6 +48,10 @@
     <small *ngIf="confSenha.hasError('required') && confSenha.touched">
         * Campo Obrigatório
       </small>
+
+      <small *ngIf="confSenha.hasError('minlength') && confSenha.dirty">
+        *Senha precisa ter no mínimo 6 caracteres</small
+      >
 
     <ion-button type="submit" size="full" style="margin-top: 5vh">Cadastrar</ion-button>
 

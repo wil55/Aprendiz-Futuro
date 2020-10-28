@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
 
   submitFormLogin() {
     if (!this.formLogin.valid) {
-      this.exibirAlert("Amigo", "Erro", "Campos Vazios!");
+      this.exibirAlert("Amigo", "Erro", "Formato de Email Inválido ou Campos Vazios!");
     } else {
       this._auth
         .logInWithEmail(this.email.value, this.senha.value)

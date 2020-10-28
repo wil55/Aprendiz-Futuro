@@ -13,6 +13,7 @@ export class RegistrarPage implements OnInit {
   formCadastrar: FormGroup;
   email: AbstractControl;
   senha: AbstractControl;
+  setor: AbstractControl;
   confSenha: AbstractControl;
 
   constructor(private formBilder: FormBuilder,
@@ -25,17 +26,19 @@ export class RegistrarPage implements OnInit {
     ngOnInit() {
       this.formCadastrar = this.formBilder.group({
         email: ["", [Validators.required, Validators.email]],
+        setor: ["", [Validators.required, Validators.minLength(5)]],
         senha: ["", [Validators.required, Validators.minLength(6)]],
         confSenha: ["", [Validators.required, Validators.minLength(6)]],
       });
       this.email = this.formCadastrar.controls["email"];
+      this.setor = this.formCadastrar.controls["setor"];
       this.senha = this.formCadastrar.controls["senha"];
       this.confSenha = this.formCadastrar.controls["confSenha"];
     }
 
   submitFormCadastrar() {
     if (!this.formCadastrar.valid) {
-      this.exibirAlert("Amigo", "Erro", "Campos em Branco!");
+      this.exibirAlert("Amigo", "Erro", "Formato de Email Inválido ou Campos Vazios!");
     } else if (this.senha.value != this.confSenha.value) {
       this.exibirAlert("Amigo", "Erro", "As senhas não conferem!");
     } else {
@@ -45,6 +48,9 @@ export class RegistrarPage implements OnInit {
           this.exibirAlert("Amigo", "Sucesso", "Usuário Cadastrado!");
           this.router.navigate(["/login"]);
         })
+        .catch((error) => {
+          this.exibirAlert("Amigo","Erro","Usuário já cadastrado!");
+        });
     }
   }
 

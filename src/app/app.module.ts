@@ -13,6 +13,7 @@ import { FirebaseService } from './service/firebase.service';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { Setor } from './service/setor.service';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     StatusBar,
     AuthService,
     FirebaseService,
+    Setor,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

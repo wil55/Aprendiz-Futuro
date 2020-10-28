@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>CADASTRO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+      <h3>Criar novo Setor</h3>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nome Completo</ion-label>
+      <ion-input type="text"[(ngModel)]="contato.nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input
+      type="text"
+      [(ngModel)]="contato.telefone"
+      [brmasker]="{phone:true}"
+      maxlength="15"
+    ></ion-input>
+    </ion-item>
+    <ion-button (click)="cadastrar()" size="full" style="margin-top: 5vh">Cadastrar</ion-button>
+  </ion-content>
