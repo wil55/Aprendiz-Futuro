@@ -28,6 +28,10 @@ const routes: Routes = [
     path: 'home-admin',
     loadChildren: () => import('./home-admin/home-admin.module').then( m => m.HomeAdminPageModule)
   },
+  {
+    path: 'editar/:key',
+    loadChildren: () => import('./editar/editar.module').then( m => m.EditarPageModule)
+  },
   
 ];
 

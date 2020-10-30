@@ -9,11 +9,14 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './service/auth.service';
-import { FirebaseService } from './service/firebase.service';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { Setor } from './service/setor.service';
+import {AngularFireDatabaseModule} from "@angular/fire/database"
+
+import { FirebaseService } from './service/firebase.service';
+import { Setor } from './service/setor';
+
 
 
 @NgModule({
@@ -24,15 +27,16 @@ import { Setor } from './service/setor.service';
      AppRoutingModule,
      AngularFireModule.initializeApp(environment.firebase),
      AngularFireAuthModule,
+     AngularFireDatabaseModule, 
     
     ],
 
   providers: [
+    SplashScreen,
     StatusBar,
     AuthService,
     FirebaseService,
-    Setor,
-    SplashScreen,
+    Setor, 
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

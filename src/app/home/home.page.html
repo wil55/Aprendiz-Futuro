@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Setores</ion-title>
+    <ion-title>Agenda</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,9 +13,9 @@
       </ion-fab>
 
       <ion-list>
-          <ion-item-sliding *ngFor="let contato of contatos; let i = index;">
+          <ion-item-sliding *ngFor="let setor of setores; let i = index;">
             <ion-item-options side="end">
-              <ion-item-option color="secondary" (click)="editar(contato?.key)">
+              <ion-item-option color="secondary" (click)="editar(setor?.key)">
                 <ion-icon name="create" style="font-size: 4vh"></ion-icon>
               </ion-item-option>
               <ion-item-option color="danger" (click)="deletar(i)">
@@ -23,14 +23,14 @@
                 </ion-item-option>
             </ion-item-options>
             <ion-item>
-              <ion-label>{{contato?.nome}}</ion-label>
-              <ion-label>{{contato?.telefone}}</ion-label>
+              <ion-label>{{setor?.nome}}</ion-label>
+              <ion-label>{{setor?.gestor}}</ion-label>
             </ion-item>
           </ion-item-sliding>
         </ion-list>
 
 
-<ion-item *ngIf="this.contatos?.length==0">
+<ion-item *ngIf="this.setores?.length==0">
   <ion-label>Lista de Contatos Vazia</ion-label>
 </ion-item>
 </ion-content>
