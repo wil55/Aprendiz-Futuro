@@ -39,8 +39,7 @@ export class HomePage {
     this.router.navigate(["/editar", key]);
   }
   
-  deletar(setor: any) {
-    console.log(setor.key); 
+  deletar(setor: any) { 
     this.exibirAlert(
     "Amigo", 
     "Confirmação",
@@ -69,7 +68,7 @@ export class HomePage {
         {
           text: "Confirmar",
           handler: () => {
-            this._firebase.delete(setor.key);
+            this._firebase.delete(setor);
 },
         },
       ],

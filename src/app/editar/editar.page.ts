@@ -51,7 +51,8 @@ export class EditarPage implements OnInit {
     }
   
     validar(campo: any): boolean {
-      if (campo != null) {
+      
+      if (campo) {
         return true;
       } else {
         return false;

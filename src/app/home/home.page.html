@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Agenda</ion-title>
+    <ion-title>  <img class="logo" alt="logo" src="assets\Logo.jpg"/></ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -18,7 +18,7 @@
               <ion-item-option color="secondary" (click)="editar(setor?.key)">
                 <ion-icon name="create" style="font-size: 4vh"></ion-icon>
               </ion-item-option>
-              <ion-item-option color="danger" (click)="deletar(i)">
+              <ion-item-option color="danger" (click)="deletar(setor?.key)">
                   <ion-icon name="trash" style="font-size: 4vh"></ion-icon>
                 </ion-item-option>
             </ion-item-options>

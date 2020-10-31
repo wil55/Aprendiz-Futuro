@@ -22,7 +22,7 @@ export class FirebaseService {
   }
 
   update(setor: Setor, key: any){
-    return this._database.list(this.path).update(key, setor)
+    return this._database.list(this.path).update(key, setor);
   }
 
   delete(key: any){
