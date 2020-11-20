@@ -29,10 +29,7 @@ const routes: Routes = [
     path: 'editar/:key',
     loadChildren: () => import('./editar/editar.module').then( m => m.EditarPageModule)
   },
-  {
-    path: 'setor',
-    loadChildren: () => import('./setor/setor.module').then( m => m.SetorPageModule)
-  },
+  
   
 ];
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
-import { Key } from 'protractor';
+import { AlertController, NavController } from '@ionic/angular';
 import { FirebaseService } from '../service/firebase.service';
 import { Setor } from '../service/setor';
 
@@ -14,11 +14,15 @@ import { Setor } from '../service/setor';
 })
 export class HomePage {
   setores: any[];
+  shownGroup = null;
+  userData: any;
 
   constructor(
     private router: Router,
     private alertController: AlertController,
-    private _firebase : FirebaseService
+    private _firebase : FirebaseService,
+    public ngFireAuth: AngularFireAuth,
+    public navCtrl: NavController,
   ) {
     let setoresLista = this._firebase.getAll();
     setoresLista.snapshotChanges().subscribe((res) => {
@@ -29,8 +33,30 @@ export class HomePage {
         this.setores.push(c as Setor);
       })
     });
-  }
 
+    this.ngFireAuth.authState.subscribe(user => {
+      if (user) {
+        this.userData = user.email;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('user'));
+      } else {
+        localStorage.setItem('user', null);
+        JSON.parse(localStorage.getItem('user'));
+      }
+    })
+
+  }
+  toggleGroup(group) {
+    if (this.isGroupShown(group)) {
+      this.shownGroup = null;
+    } else {
+      this.shownGroup = group;
+    }
+  };
+  isGroupShown(group) {
+    return this.shownGroup === group;
+  };
+  
   irParaCadastrar() {
     this.router.navigate(["/cadastrar"]);
   }
@@ -39,11 +65,11 @@ export class HomePage {
     this.router.navigate(["/editar", key]);
   }
   
-  deletar(setor: any) { 
+  deletar(setor: any,nome: any) { 
     this.exibirAlert(
     "Amigo", 
     "Confirmação",
-    "Deseja mesmo remover o setor?", 
+    "Deseja mesmo remover o setor '" + nome + "' ?", 
     setor
     );
   }
@@ -74,6 +100,10 @@ export class HomePage {
       ],
     });
     await alert.present();
+  }
+
+  sair() { 
+    this.navCtrl.navigateRoot('/login')
   }
 
 }

@@ -26,12 +26,10 @@ export class RegistrarPage implements OnInit {
     ngOnInit() {
       this.formCadastrar = this.formBilder.group({
         email: ["", [Validators.required, Validators.email]],
-        setor: ["", [Validators.required, Validators.minLength(5)]],
         senha: ["", [Validators.required, Validators.minLength(6)]],
         confSenha: ["", [Validators.required, Validators.minLength(6)]],
       });
       this.email = this.formCadastrar.controls["email"];
-      this.setor = this.formCadastrar.controls["setor"];
       this.senha = this.formCadastrar.controls["senha"];
       this.confSenha = this.formCadastrar.controls["confSenha"];
     }

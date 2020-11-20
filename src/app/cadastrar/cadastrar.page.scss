@@ -1,13 +1,19 @@
 ion-toolbar{
-    text-align: center;
-    color: #f7f7fd;
-    --ion-background-color:#000000;
-  }
-  ion-title{
-    color: #3f57e2;
+  text-align: center;
+  color: #f7f7fd;
+  --ion-background-color:#fcf8f8;
 }
-  ion-content{
-  
-    --ion-background-color:#daedf0;
-  }
-  
+ion-title{
+  color: #3f57e2;
+}
+ion-content{
+  --ion-background-color:#daedf0;
+}
+ion-card{
+  --ion-background-color:#f6f7f8;
+  border-radius: 10px;
+}
+.logo{
+  margin:auto;
+}
+

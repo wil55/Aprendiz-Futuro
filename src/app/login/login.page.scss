@@ -1,31 +1,38 @@
 ion-toolbar{
+  text-align: center;
+  color: #3972a7;
+  --ion-background-color:#fffefe;
+}
+
+ion-content{
+  --ion-background-color:#cde0e4;
+}
+
+ion-title{
+  padding: 5px;
+}
+
+
+#login {
     text-align: center;
-    color: #3972a7;
-    --ion-background-color:#000000;
+    position: absolute;
+    left: 10;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
-  
-  ion-content{
-  
-    --ion-background-color:#f9feff;
+
+.logo{
+  background-size: 250px;
+  position: center;
+}
+
+  .link{
+  font-style: italic;
   }
-  
-  
-  #login {
-      text-align: center;
-    
-      position: absolute;
-      left: 10;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-   
-    
-    
-      .logo{
-  
-        background-size: 250px;
-        position: center;
-      }
-      
-  
+
+  ion-card{
+    --ion-background-color:#fffefe;
+    border-radius: 10px;
+  }
+

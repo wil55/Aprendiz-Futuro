@@ -5,9 +5,14 @@
 </ion-header>
 
 <ion-content>
-    <ion-item>
-      <h3>Editar Setor</h3>
-    </ion-item>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        Editar Setor
+      </ion-card-subtitle>
+  </ion-card-header>
+   
+  <ion-card-content>
     <ion-item>
       <ion-label position="floating">Nome do Setor</ion-label>
       <ion-input type="text"[(ngModel)]="setor.nome"></ion-input>
@@ -20,7 +25,32 @@
       maxlength="15"
     ></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label position="floating">Funções do Setor</ion-label>
+      <ion-textarea type="text"  [(ngModel)]="setor.funcoes"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Funções do Aprendiz</ion-label>
+      <ion-textarea type="text"  [(ngModel)]="setor.funcoes_ap"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Procedimentos</ion-label>
+      <ion-textarea type="text"  [(ngModel)]="setor.procedimentos"></ion-textarea>
+    </ion-item>
+  </ion-card-content>
+  </ion-card>
     
-    <ion-button (click)="salvar()" size="full" style="margin-top: 5vh">Salvar Alterações</ion-button>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="salvar()" color="success" expand="full">Salvar</ion-button>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="cancelar()" color="danger">Cancelar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-content>
 

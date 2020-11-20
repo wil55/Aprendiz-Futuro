@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,28 @@ export class LoginPage implements OnInit {
   formLogin: FormGroup;
   email: AbstractControl;
   senha: AbstractControl;
+  userData: any;
 
   constructor(private formBilder: FormBuilder,
     private alerController: AlertController,
     private router: Router,
-    private _auth: AuthService
-    ) {}
+    private _auth: AuthService,
+    public loadingController: LoadingController,
+    public ngFireAuth: AngularFireAuth,
+    public toastCtrl: ToastController, 
+    ) {
+      this.ngFireAuth.authState.subscribe(user => {
+        if (user) {
+          this.userData = user.email;
+          localStorage.setItem('user', JSON.stringify(this.userData));
+          JSON.parse(localStorage.getItem('user'));
+        } else {
+          localStorage.setItem('user', null);
+          JSON.parse(localStorage.getItem('user'));
+        }
+      })
+  
+    }
 
   ngOnInit() {
     this.formLogin = this.formBilder.group({
@@ -36,7 +53,7 @@ export class LoginPage implements OnInit {
       this._auth
         .logInWithEmail(this.email.value, this.senha.value)
         .then((user) => {
-          this.exibirAlert("Amigo", "Sucesso", "Seja bem vindo!");
+          this.exibirAlert2(this.userData, "Seja bem vindo!");
           this.router.navigate(["/home"]);
         })
         .catch((error) => {
@@ -61,6 +78,16 @@ export class LoginPage implements OnInit {
       buttons: ["OK"],
     });
     await alert.present();
+  }
+
+  async exibirAlert2(header: string, message: string) {
+    const toast = await this.toastCtrl.create({
+      cssClass: "my-custom-class",
+      header: header,
+      message: message,
+      duration: 2000
+    });
+    await toast.present();
   }
 
 }

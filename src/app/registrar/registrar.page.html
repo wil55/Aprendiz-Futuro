@@ -21,8 +21,6 @@
     <small *ngIf="email.hasError('email') && email.touched">
         * Formato de email inválido
     </small>
-
-  
     <ion-item>
       <ion-label position="floating">Senha</ion-label>
       <ion-input type="password" formControlName="senha"></ion-input>
@@ -50,6 +48,7 @@
       >
 
     <ion-button type="submit" size="full" style="margin-top: 5vh">Cadastrar</ion-button>
+    <ion-button (click)="cancelar()" color="danger" size="full" style="margin-top: 5vh">Cancelar</ion-button>
 
   </form>
   </ion-content>

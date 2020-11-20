@@ -1,24 +1,53 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>  <img class="logo" alt="logo" src="assets\Logo.jpg"/></ion-title>
+    <ion-title> <img class="logo" alt="logo" src="assets\Logo.jpg" /></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-item>
-      <h3>Criar Novo Setor</h3>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Nome do Setor</ion-label>
-      <ion-input type="text"[(ngModel)]="setor.nome"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Gestor da Área</ion-label>
-      <ion-input
-      [(ngModel)]="setor.gestor"
-      type= "text"
-      maxlength="15"
-    ></ion-input>
-    </ion-item>
-    <ion-button (click)="cadastrar()" size="full" style="margin-top: 5vh">Cadastrar</ion-button>
-  </ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>
+        Novo Setor
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nome do Setor</ion-label>
+        <ion-input type="text" [(ngModel)]="setor.nome" minlength="2"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Gestor da Área</ion-label>
+        <ion-input [(ngModel)]="setor.gestor" type="text" maxlength="15" minlength="2"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Funções do Setor</ion-label>
+        <ion-textarea type="text" [(ngModel)]="setor.funcoes" minlength="5"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Funções do Aprendiz</ion-label>
+        <ion-textarea type="text" [(ngModel)]="setor.funcoes_ap" minlength="5"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Procedimentos</ion-label>
+        <ion-textarea type="text" [(ngModel)]="setor.procedimentos" minlength="5"></ion-textarea>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="cadastrar()" color="success"  expand="block" style="margin-top: 5vh">Cadastrar
+        </ion-button>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="cancelar()" color="danger"  expand="block" style="margin-top: 5vh">Cancelar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+ 
+</ion-content>

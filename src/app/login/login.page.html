@@ -1,45 +1,48 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>  <img class="logo" alt="logo" src="assets\Logo.jpg"/></ion-title>
+    <ion-title> <img class="logo" alt="logo" src="assets\Logo.jpg" /></ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding class="getstart">
-<ion-content>
+  <ion-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-item>
+            <h3>Identificação e Acesso</h3>
+          </ion-item>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="formLogin" (submit)="submitFormLogin()">
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
 
-  <ion-item>
-    <h3>Identificação e Acesso</h3>
+          <small *ngIf="email.hasError('required') && email.touched">
+            * Campo Obrigatório
+          </small>
 
-  </ion-item>
-  <form [formGroup]="formLogin" (submit)="submitFormLogin()">
-  <ion-item>
-    <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" formControlName="email"></ion-input>
-  </ion-item>
+          <small *ngIf="email.hasError('email') && email.touched">
+            * Formato de email invalido
+          </small>
 
-  <small *ngIf="email.hasError('required') && email.touched">
-    * Campo Obrigatório
-  </small>
+          <ion-item>
+            <ion-label position="floating">Senha</ion-label>
+            <ion-input type="password" formControlName="senha"></ion-input>
+          </ion-item>
 
-  <small *ngIf="email.hasError('email') && email.touched">
-    * Formato de email invalido
-  </small>
+          <small *ngIf="senha.hasError('required') && senha.touched">
+            * Campo Obrigatório
+          </small>
 
-  <ion-item>
-    <ion-label position="floating">Senha</ion-label>
-    <ion-input type="password" formControlName="senha"></ion-input>
-  </ion-item>
-
-  <small *ngIf="senha.hasError('required') && senha.touched">
-      * Campo Obrigatório
-    </small>
-
- 
-  <ion-button type="submit" size="full" style="margin-top: 5vh">Acessar</ion-button >
-
-  </form>
-  <ion-item>
-  <a (click)="irParaRegistrar()">Não tem Cadastro? Clique Aqui!</a>
-  </ion-item>
-</ion-content>
-
-
+            <ion-button type="submit" size="full" shape="round" style="margin-top: 5vh">Acessar</ion-button>
+        </form>
+      </ion-card-content>
+   
+    <ion-item>
+      <a class="link"(click)="irParaRegistrar()">Não tem Cadastro? Clique Aqui!</a>
+    </ion-item>
+  </ion-card>
+  </ion-content>

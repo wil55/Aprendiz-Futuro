@@ -10,14 +10,15 @@ export class AuthService {
 
   logInWithEmail(
     email: string,
-    senha: string
+    senha: string,
+    
   ): Promise<firebase.auth.UserCredential> {
     return this._angularFire.signInWithEmailAndPassword(email,senha);
   }
 
   registerWithEmail(
     email: string,
-    senha: string
+    senha: string,
   ): Promise<firebase.auth.UserCredential> {
     return this._angularFire.createUserWithEmailAndPassword(email, senha);
   }
